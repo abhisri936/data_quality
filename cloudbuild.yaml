@@ -1,5 +1,5 @@
 steps:
-  - name: gcr.io/google.com/cloudsdk/cloud-sdk
+  - name: create_bucket
     entrypoint: bash
     args:
       - -c
