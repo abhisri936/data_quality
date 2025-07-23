@@ -10,7 +10,7 @@ steps:
           --default-storage-class=${_STORAGE_CLASS} \
           --project=${PROJECT_ID}
 substitutions:
-  _BUCKET_NAME: my-new-bucket-12345
+  _BUCKET_NAME: my-new-bucket-22
   _BUCKET_LOCATION: US
   _STORAGE_CLASS: STANDARD
 options:
