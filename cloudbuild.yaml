@@ -7,7 +7,7 @@ steps:
         echo "Creating GCS bucket..."
         gcloud storage buckets create gs://${_BUCKET_NAME} \
           --location=${_BUCKET_LOCATION} \
-          --storage-class=${_STORAGE_CLASS} \
+          --default-storage-class=${_STORAGE_CLASS} \
           --project=${PROJECT_ID}
 substitutions:
   _BUCKET_NAME: my-new-bucket-12345
