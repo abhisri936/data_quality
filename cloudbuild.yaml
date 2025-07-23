@@ -13,3 +13,4 @@ substitutions:
   _BUCKET_NAME: my-new-bucket-12345
   _BUCKET_LOCATION: US
   _STORAGE_CLASS: STANDARD
+  PROJECT_ID : sixth-clone-466418-p4
