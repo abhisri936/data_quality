@@ -1,17 +1,35 @@
+#steps:
+#  - name: google/cloud-sdk
+#    entrypoint: bash
+#    args:
+#      - -c
+#      - |
+#        echo "Creating GCS bucket..."
+#        gcloud storage buckets create gs://${_BUCKET_NAME} \
+#          --location=${_BUCKET_LOCATION} \
+#          --default-storage-class=${_STORAGE_CLASS} \
+#          --project=${PROJECT_ID}
+#substitutions:
+#  _BUCKET_NAME: my-new-bucket-22
+#  _BUCKET_LOCATION: US
+#  _STORAGE_CLASS: STANDARD
+#options:
+#  logging: CLOUD_LOGGING_ONLY
+
 steps:
-  - name: google/cloud-sdk
-    entrypoint: bash
+  - name: hashicorp/terraform:1.6.6
+    entrypoint: sh
     args:
       - -c
       - |
-        echo "Creating GCS bucket..."
-        gcloud storage buckets create gs://${_BUCKET_NAME} \
-          --location=${_BUCKET_LOCATION} \
-          --default-storage-class=${_STORAGE_CLASS} \
-          --project=${PROJECT_ID}
+        terraform init
+        terraform apply -auto-approve
+
 substitutions:
-  _BUCKET_NAME: my-new-bucket-22
-  _BUCKET_LOCATION: US
-  _STORAGE_CLASS: STANDARD
+  _TF_VAR_PROJECT_ID: your-gcp-project-id
+  _TF_VAR_TOPIC_NAME: my-git-triggered-topic
+
 options:
   logging: CLOUD_LOGGING_ONLY
+
+timeout: 600s
