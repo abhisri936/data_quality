@@ -24,23 +24,23 @@ import {
   id       = each.key
 }
 
-locals {
-  flattened_subscriptions = flatten([
-      for topic in var.pub_sub : [
-        for sub in topic.push_subscriptions : {
-          topic_name  = topic.topic_name
-          subscription_name = sub.name
-        }
-      ]
-    ])
-}
-
-import {
-
-  for_each = { for sub_cnt in local.flattened_subscriptions : "${sub_cnt.topic_name}-${sub_cnt.subscription_name}" => sub_cnt }
-  to       = module.pubsub[each.value.topic_name].google_pubsub_subscription.push_subscriptions[each.value.subscription_name]
-  id       = "projects/${var.service_project_id}/subscriptions/${each.value.subscription_name}"
-}
+# locals {
+#   flattened_subscriptions = flatten([
+#       for topic in var.pub_sub : [
+#         for sub in topic.push_subscriptions : {
+#           topic_name  = topic.topic_name
+#           subscription_name = sub.name
+#         }
+#       ]
+#     ])
+# }
+#
+# import {
+#
+#   for_each = { for sub_cnt in local.flattened_subscriptions : "${sub_cnt.topic_name}-${sub_cnt.subscription_name}" => sub_cnt }
+#   to       = module.pubsub[each.value.topic_name].google_pubsub_subscription.push_subscriptions[each.value.subscription_name]
+#   id       = "projects/${var.service_project_id}/subscriptions/${each.value.subscription_name}"
+# }
 
 
 # CREATES Pubsub Subscriptions
