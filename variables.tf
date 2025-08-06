@@ -23,7 +23,7 @@ variable "pub_sub" {
       push_endpoint              = optional(string),
       oidc_service_account_email = optional(string,""),
       audience                   = optional(string),
-      expiration_policy          = optional(string),
+      expiration_policy          = optional(string,""),
       dead_letter_topic          = optional(string,""),
       retain_acked_messages      = optional(bool),
       message_retention_duration = optional(string),
