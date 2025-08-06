@@ -25,11 +25,11 @@ provider "google" {
 }
 
 
-import {
-    for_each = { for topic in var.pub_sub : topic.topic_name => topic }
-    to       = module.pubsub[each.key].google_pubsub_topic.topic[0]
-    id       = each.key
-}
+# import {
+#     for_each = { for topic in var.pub_sub : topic.topic_name => topic }
+#     to       = module.pubsub[each.key].google_pubsub_topic.topic[0]
+#     id       = each.key
+# }
 
 # locals {
 #   flattened_subscriptions = flatten([
