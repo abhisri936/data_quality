@@ -21,7 +21,7 @@ variable "pub_sub" {
       name                       = string,
       ack_deadline_seconds       = optional(number),
       push_endpoint              = optional(string),
-      oidc_service_account_email = optional(string),
+      oidc_service_account_email = optional(string,""),
       audience                   = optional(string),
       expiration_policy          = optional(string),
       dead_letter_topic          = optional(string,""),
