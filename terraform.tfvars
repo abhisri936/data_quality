@@ -25,15 +25,6 @@ pub_sub = [
 },
 {
 "topic_name"       = "tf-apply-approval"
-"push_subscriptions" = [
-    {
-              name                       = "gcb-terraform-project-resources-creator-apply"
-              push_endpoint              = "rpc://name:CloudBuildPushEndpoint:gslb:google.pubsub.v1.cloudbuildpushendpoint-prod-global"
-              expiration_policy          = "365d"
-
-    }
-
-]
 "pull_subscriptions" = [
     {
              name                        = "tf-apply-approval-sub"
@@ -44,22 +35,8 @@ pub_sub = [
 },
 {
  "topic_name"       = "tf-recreate-composer"
-#  "push_subscriptions" = [
-#      {
-#                name                       = "gcb-terraform-composer-recreate"
-#                push_endpoint              = "rpc://name:CloudBuildPushEndpoint:gslb:google.pubsub.v1.cloudbuildpushendpoint-prod-global"
-#                expiration_policy          = ""
-#
-#      }]
 },
 {
   "topic_name"       = "tf-destroy-composer"
-#   "push_subscriptions" = [
-#       {
-#                 name                       = "gcb-terraform-composer-recreate"
-#                 push_endpoint              = "rpc://name:CloudBuildPushEndpoint:gslb:google.pubsub.v1.cloudbuildpushendpoint-prod-global"
-#                 expiration_policy          = ""
-#
-#       }]
 }
 ]
