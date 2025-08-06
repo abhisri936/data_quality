@@ -17,6 +17,14 @@ provider "google" {
   region  = var.region
 }
 
-resource "google_pubsub_topic" "my_topic" {
-  name = var.topic_name
+# CREATES Pubsub Subscriptions
+module "pubsub" {
+  source             = "terraform-google-modules/pubsub/google"
+  version            = "~> 7.0"
+  for_each           = { for idx, topic in var.pub_sub : topic.topic_name => topic }
+  topic              = each.value.topic_name
+  topic_labels       = merge({environment=var.environment_label, application_name=var.dq_application_label}, var.default_labels)
+  project_id         = var.service_project_id
+  push_subscriptions = each.value.push_subscriptions
+  pull_subscriptions = each.value.pull_subscriptions
 }
