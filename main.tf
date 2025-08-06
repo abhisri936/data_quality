@@ -1,10 +1,17 @@
 terraform {
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = ">= 4.0"
+  required_version = "~> 1.0"
+
+    required_providers {
+      google = {
+        source  = "hashicorp/google"
+        version = ">= 5.21.0, < 6"
+      }
+
+      google-beta = {
+        source  = "hashicorp/google-beta"
+        version = ">= 4.8.0, < 6"
+      }
     }
-  }
 
   backend "gcs" {
     bucket  = "my-new-bucket-22"   # Replace with actual bucket name
